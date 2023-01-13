@@ -15,7 +15,8 @@
                  [metosin/muuntaja "0.1.0"]
                  [metosin/ring-http-response "0.8.0"]
                  [metosin/ring-swagger "0.22.11"]
-                 [metosin/ring-swagger-ui "2.2.5-0"]]
+                 [metosin/ring-swagger-ui "2.2.5-0"]
+                 [javax.servlet/servlet-api "2.5"]]
   :profiles {:uberjar {:aot :all
                        :ring {:handler examples.thingie/app}
                        :source-paths ["examples/thingie/src"]
@@ -54,6 +55,8 @@
             :target "gh-pages/doc"
             :src-uri "http://github.com/metosin/compojure-api/blob/master/"
             :src-uri-prefix "#L"}
+  :uber-shade {:relocations [{:from muuntaja :to muuntaja.shade}]}
+  :plugins [[lein-uber-shade "0.1.2"]]
   :aliases {"all" ["with-profile" "dev:dev,logging:dev,1.7"]
             "start-thingie" ["run"]
             "aot-uberjar" ["with-profile" "uberjar" "do" "clean," "ring" "uberjar"]
