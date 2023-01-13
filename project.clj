@@ -16,13 +16,15 @@
                  [metosin/ring-http-response "0.8.0"]
                  [metosin/ring-swagger "0.22.11"]
                  [metosin/ring-swagger-ui "2.2.5-0"]]
+  :uber-shade {:relocations [{:from muuntaja.core :to muuntaja.shaded.core}]}
   :profiles {:uberjar {:aot :all
                        :ring {:handler examples.thingie/app}
                        :source-paths ["examples/thingie/src"]
                        :dependencies [[org.clojure/clojure "1.8.0"]
                                       [http-kit "2.2.0"]
                                       [reloaded.repl "0.2.3"]
-                                      [com.stuartsierra/component "0.3.1"]]}
+                                      [com.stuartsierra/component "0.3.1"]]
+                       :plugins [[lein-uber-shade "0.1.2"]]}
              :dev {:repl-options {:init-ns user}
                    :plugins [[lein-clojars "0.9.1"]
                              [lein-midje "3.2.1"]
@@ -60,4 +62,4 @@
             "test-ancient" ["midje"]
             "perf" ["with-profile" "default,dev,perf"]
             "deploy!" ^{:doc "Recompile sources, then deploy if tests succeed."}
-                      ["do" ["clean"] ["midje"] ["deploy" "clojars"]]})
+            ["do" ["clean"] ["midje"] ["deploy" "clojars"]]})
