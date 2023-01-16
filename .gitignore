@@ -12,3 +12,5 @@ pom.xml.asc
 bower_components
 *.log
 gh-pages
+.clj-kondo/**/*
+.lsp/**/*
