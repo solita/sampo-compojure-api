@@ -1,4 +1,4 @@
-(defproject metosin/compojure-api "1.2.0-SHADED-4"
+(defproject metosin/compojure-api "1.2.0-SHADED-5"
   :description "Compojure Api"
   :url "https://github.com/metosin/compojure-api"
   :license {:name "Eclipse Public License"
@@ -22,7 +22,8 @@
   :mranderson {:unresolved-tree true
                :included-source-paths :source-paths
                :overrides {[metosin/muuntaja org.yaml/snakeyaml] [org.yaml/snakeyaml "1.33"]}
-               :expositions [[metosin/muuntaja org.yaml/snakeyaml]]}
+               :expositions [[metosin/muuntaja org.yaml/snakeyaml]]
+               :project-prefix sampo-shade}
   :profiles {:uberjar {:aot :all}
             ;;  :dev {:repl-options {:init-ns user}
             ;;        :plugins [[lein-clojars "0.9.1"]
